@@ -11,12 +11,10 @@ const FriendsDetails = () => {
   const friends = useLoaderData();
   const { syncInteractions } = useFriends();
 
-  // ডাটা খোঁজা
   const friend = friends.find((fnd) => fnd.id === parseInt(id));
 
   if (!friend) return <div className="p-20 text-center font-bold">Friend Not Found</div>;
 
-  // সব ডাটা একসাথে ডিস্ট্রাকচার করা
   const { 
     name, 
     picture, 
@@ -114,15 +112,15 @@ const FriendsDetails = () => {
           <div className="bg-white rounded-[2rem] p-8 shadow-sm border border-slate-100">
             <h3 className="text-lg font-bold mb-6 text-slate-800">Quick Check-In</h3>
             <div className="grid grid-cols-3 gap-4">
-              <button onClick={() => handleAction('Call')} className="flex flex-col items-center gap-3 bg-slate-50 p-6 rounded-2xl hover:bg-blue-50 transition-all border border-transparent hover:border-blue-100 group">
+              <button onClick={() => handleAction('Call')} className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-blue-50 transition-all border border-transparent hover:border-blue-100 group">
                 <LuPhone className="text-2xl text-slate-600 group-hover:text-blue-600" />
                 <span className="font-bold text-[10px] uppercase tracking-wider text-slate-400 group-hover:text-blue-600">Call</span>
               </button>
-              <button onClick={() => handleAction('Text')} className="flex flex-col items-center gap-3 bg-slate-50 p-6 rounded-2xl hover:bg-emerald-50 transition-all border border-transparent hover:border-emerald-100 group">
+              <button onClick={() => handleAction('Text')} className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-emerald-50 transition-all border border-transparent hover:border-emerald-100 group">
                 <LuMessageSquare className="text-2xl text-slate-600 group-hover:text-emerald-600" />
                 <span className="font-bold text-[10px] uppercase tracking-wider text-slate-400 group-hover:text-emerald-600">Text</span>
               </button>
-              <button onClick={() => handleAction('Video')} className="flex flex-col items-center gap-3 bg-slate-50 p-6 rounded-2xl hover:bg-purple-50 transition-all border border-transparent hover:border-purple-100 group">
+              <button onClick={() => handleAction('Video')} className="flex flex-col items-center gap-3  p-6 rounded-2xl bg-purple-50 transition-all border border-transparent hover:border-purple-100 group">
                 <LuVideo className="text-2xl text-slate-600 group-hover:text-purple-600" />
                 <span className="font-bold text-[10px] uppercase tracking-wider text-slate-400 group-hover:text-purple-600">Video</span>
               </button>

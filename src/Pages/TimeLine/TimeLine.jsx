@@ -1,64 +1,86 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useFriends } from '../../FriendProvider/FriendProvider';
-import { LuPhone, LuMessageSquare, LuVideo, LuLayers } from "react-icons/lu";
+import { LuPhone, LuMessageSquare, LuVideo, LuHandshake, LuChevronDown } from "react-icons/lu";
 
 const Timeline = () => {
   const { callLogs, textLogs, videoLogs } = useFriends();
+  const [activeFilter, setActiveFilter] = useState('All');
 
-  const CategoryBox = ({ title, icon: Icon, data, colorClass, textColor }) => (
-    <div className="bg-white rounded-[2.5rem] p-8 shadow-sm border border-slate-100">
-      <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 ${colorClass}`}>
-        <Icon size={22} />
-      </div>
-      <h3 className="text-lg font-black text-slate-800 mb-6">{title}</h3>
-      
-      <div className="space-y-4">
-        {data.length > 0 ? data.map((item, i) => (
-          <div key={i} className="p-5 rounded-2xl bg-slate-50 border border-slate-100">
-            <p className="text-sm font-bold text-slate-700 leading-tight mb-3">{item.note}</p>
-            <span className="text-[9px] font-black uppercase text-slate-400 tracking-widest">{item.date}</span>
-          </div>
-        )) : (
-          <div className="py-10 text-center border-2 border-dashed border-slate-50 rounded-2xl text-slate-300 text-[10px] uppercase font-bold">
-            No Sync Data
-          </div>
-        )}
-      </div>
-    </div>
-  );
+  // সব লগগুলোকে একটি সিঙ্গেল লিস্টে নিয়ে আসা
+  // এখানে প্রতিটি আইটেমের সাথে 'name' হিসেবে একটি ডামি নাম দেওয়া হয়েছে যেহেতু সিঙ্ক ডেটাতে নাম নেই
+  const allLogs = [
+    ...callLogs.map(item => ({ ...item, type: 'Call' })),
+    ...textLogs.map(item => ({ ...item, type: 'Text' })),
+    ...videoLogs.map(item => ({ ...item, type: 'Video' })),
+  ];
+
+  // ফিল্টারিং লজিক
+  const filteredActivities = activeFilter === 'All' 
+    ? allLogs 
+    : allLogs.filter(activity => activity.type === activeFilter);
+
+  // আইকন ম্যাপ (ইমেজ অনুযায়ী)
+  const iconMap = {
+    'Call': <LuPhone className="text-slate-600" size={24} />,
+    'Text': <LuMessageSquare className="text-slate-600" size={24} />,
+    'Video': <LuVideo className="text-slate-600" size={24} />,
+    'Meetup': <LuHandshake className="text-amber-500" size={24} />,
+  };
 
   return (
-    <div className="bg-[#F8FAFC] min-h-screen py-16 px-6 font-sans">
-      <div className="max-w-6xl mx-auto">
-        <header className="flex items-center gap-5 mb-14">
-          <div className="p-4 bg-indigo-600 rounded-[1.5rem] text-white shadow-xl shadow-indigo-100">
-            <LuLayers size={28} />
-          </div>
-          <div>
-            <h1 className="text-3xl font-black text-slate-900 tracking-tight uppercase">Global Dashboard</h1>
-            <p className="text-slate-400 text-xs font-bold uppercase tracking-widest mt-1">Real-time interaction sync</p>
-          </div>
-        </header>
+    <div className="bg-[#F8FAFC] min-h-screen py-12 px-6 font-sans">
+      <div className="max-w-5xl mx-auto">
+        
+        {/* Title */}
+        <h1 className="text-5xl font-bold text-[#1E293B] mb-10 tracking-tight">Timeline</h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <CategoryBox 
-            title="Call Logs" 
-            icon={LuPhone} 
-            data={callLogs} 
-            colorClass="bg-blue-50 text-blue-500" 
-          />
-          <CategoryBox 
-            title="Text Logs" 
-            icon={LuMessageSquare} 
-            data={textLogs} 
-            colorClass="bg-emerald-50 text-emerald-500" 
-          />
-          <CategoryBox 
-            title="Video Logs" 
-            icon={LuVideo} 
-            data={videoLogs} 
-            colorClass="bg-purple-50 text-purple-500" 
-          />
+        {/* Filter Dropdown */}
+        <div className="relative w-full max-w-[280px] mb-10">
+          <select 
+            value={activeFilter}
+            onChange={(e) => setActiveFilter(e.target.value)}
+            className="w-full appearance-none bg-white border border-slate-200 text-slate-500 py-3.5 px-5 pr-12 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/10 transition-all cursor-pointer font-medium"
+          >
+            <option value="All">Filter timeline (All)</option>
+            <option value="Call">Calls</option>
+            <option value="Text">Texts</option>
+            <option value="Video">Videos</option>
+            <option value="Meetup">Meetups</option>
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400 border-l border-slate-100 my-2">
+            <LuChevronDown size={18} />
+          </div>
+        </div>
+
+        {/* Timeline List */}
+        <div className="space-y-4">
+          {filteredActivities.length > 0 ? (
+            filteredActivities.map((activity, index) => (
+              <div 
+                key={index} 
+                className="group bg-white border border-slate-100 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all flex items-center gap-6 animate-in fade-in slide-in-from-bottom-2 duration-300"
+              >
+                <div className="w-14 h-14 flex items-center justify-center rounded-full bg-slate-50 group-hover:bg-white transition-colors">
+                  {iconMap[activity.type] || <LuMessageSquare />}
+                </div>
+
+                <div className="flex-1">
+                  <h3 className="text-lg font-medium text-slate-500">
+                    <span className="font-bold text-slate-800">{activity.type}</span> 
+                    {/* এখানে dynamic friend name চাইলে FriendsDetails থেকে পাঠাতে হবে, এখন placeholder দেওয়া হলো */}
+                    {activity.note ? ` - ${activity.note}` : ' Activity recorded'}
+                  </h3>
+                  <p className="text-slate-400 text-sm mt-1">{activity.date}</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="text-center py-24 bg-white rounded-3xl border border-dashed border-slate-200 shadow-sm">
+              <p className="text-slate-400 font-medium italic">
+                No sync data available. Click "Sync" from Friend Details to see updates.
+              </p>
+            </div>
+          )}
         </div>
       </div>
     </div>
