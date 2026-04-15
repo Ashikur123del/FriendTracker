@@ -7,11 +7,16 @@ export const FriendProvider = ({ children }) => {
   const [textLogs, setTextLogs] = useState([]);
   const [videoLogs, setVideoLogs] = useState([]);
 
-
+  
   const syncInteractions = (type, data) => {
-    if (type === 'Call') setCallLogs(data);
-    else if (type === 'Text') setTextLogs(data);
-    else if (type === 'Video') setVideoLogs(data);
+  
+    if (type === 'Call') {
+      setCallLogs((prev) => [...prev, ...data]);
+    } else if (type === 'Text') {
+      setTextLogs((prev) => [...prev, ...data]);
+    } else if (type === 'Video') {
+      setVideoLogs((prev) => [...prev, ...data]);
+    }
   };
 
   return (
