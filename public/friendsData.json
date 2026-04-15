@@ -2,20 +2,25 @@
   {
     "id": 1,
     "name": "Arif Hasan",
-    "picture": "https://randomuser.me/api/portraits/men/11.jpg",
+    "picture": "https://randomuser.me/api/portraits/men/22.jpg",
     "email": "arif.hasan@gmail.com",
     "days_since_contact": 18,
     "status": "overdue",
     "tags": ["work"],
-    "bio": "Studied Computer Science together. Used to work on projects late at night.",
-    "goal": 14,
+    "bio": "Former colleague, great mentor",
+    "goal": 30,
     "next_due_date": "2025-07-10",
-    "days": "62d ago"
+    "days": "62",
+    "recent_interactions": [
+      { "type": "Text", "date": "Jan 28, 2026", "note": "Asked for career advice" },
+      { "type": "Video", "date": "Jan 15, 2026", "note": "Project discussion" },
+      { "type": "Call", "date": "Jan 05, 2026", "note": "New year greetings" }
+    ]
   },
   {
     "id": 2,
     "name": "Nusrat Jahan",
-    "picture": "https://randomuser.me/api/portraits/women/12.jpg",
+    "picture": "https://randomuser.me/api/portraits/women/11.jpg",
     "email": "nusrat.jahan@gmail.com",
     "days_since_contact": 6,
     "status": "on-track",
@@ -23,7 +28,12 @@
     "bio": "Works in the same team. We usually catch up during lunch breaks.",
     "goal": 10,
     "next_due_date": "2025-07-18",
-    "days": "62d ago"
+    "days": "62",
+    "recent_interactions": [
+      { "type": "Text", "date": "Jan 28, 2026", "note": "Asked for career advice" },
+      { "type": "Video", "date": "Jan 15, 2026", "note": "Project discussion" },
+      { "type": "Call", "date": "Jan 05, 2026", "note": "New year greetings" }
+    ]
   },
   {
     "id": 3,
@@ -36,7 +46,12 @@
     "bio": "Gym partner who keeps me motivated to stay consistent.",
     "goal": 12,
     "next_due_date": "2025-07-15",
-    "days": "62d ago"
+    "days": "62",
+    "recent_interactions": [
+      { "type": "Text", "date": "Jan 28, 2026", "note": "Asked for career advice" },
+      { "type": "Video", "date": "Jan 15, 2026", "note": "Project discussion" },
+      { "type": "Call", "date": "Jan 05, 2026", "note": "New year greetings" }
+    ]
   },
   {
     "id": 4,
@@ -49,7 +64,12 @@
     "bio": "My cousin. We meet during family events and stay in touch regularly.",
     "goal": 20,
     "next_due_date": "2025-07-25",
-    "days": "62d ago"
+    "days": "62",
+    "recent_interactions": [
+       { "type": "Text", "date": "Jan 28, 2026", "note": "Asked for career advice" },
+      { "type": "Video", "date": "Jan 15, 2026", "note": "Project discussion" },
+      { "type": "Call", "date": "Jan 05, 2026", "note": "New year greetings" }
+    ]
   },
   {
     "id": 5,
@@ -62,7 +82,12 @@
     "bio": "Old school friend. Haven't talked properly in a long time.",
     "goal": 10,
     "next_due_date": "2025-07-12",
-    "days": "62d ago"
+    "days": "62",
+    "recent_interactions": [
+      { "type": "Text", "date": "Jan 28, 2026", "note": "Asked for career advice" },
+      { "type": "Video", "date": "Jan 15, 2026", "note": "Project discussion" },
+      { "type": "Call", "date": "Jan 05, 2026", "note": "New year greetings" }
+    ]
   },
   {
     "id": 6,
@@ -75,7 +100,12 @@
     "bio": "Collaborated on several UI/UX projects. Great sense of design.",
     "goal": 10,
     "next_due_date": "2025-07-16",
-    "days": "62d ago"
+    "days": "62",
+    "recent_interactions": [
+       { "type": "Text", "date": "Jan 28, 2026", "note": "Asked for career advice" },
+      { "type": "Video", "date": "Jan 15, 2026", "note": "Project discussion" },
+      { "type": "Call", "date": "Jan 05, 2026", "note": "New year greetings" }
+    ]
   },
   {
     "id": 7,
@@ -88,7 +118,12 @@
     "bio": "We play football together every weekend.",
     "goal": 7,
     "next_due_date": "2025-07-19",
-    "days": "62d ago"
+    "days": "62",
+    "recent_interactions": [
+      { "type": "Text", "date": "Jan 28, 2026", "note": "Asked for career advice" },
+      { "type": "Video", "date": "Jan 15, 2026", "note": "Project discussion" },
+      { "type": "Call", "date": "Jan 05, 2026", "note": "New year greetings" }
+    ]
   },
   {
     "id": 8,
@@ -97,11 +132,16 @@
     "email": "jannatul.ferdous@gmail.com",
     "days_since_contact": 13,
     "status": "almost due",
-   "tags": ["hobby", "travel"],
+    "tags": ["hobby", "travel"],
     "bio": "Lives next door. We often have casual evening chats.",
     "goal": 14,
     "next_due_date": "2025-07-14",
-    "days": "62d ago"
+    "days": "62",
+    "recent_interactions": [
+       { "type": "Text", "date": "Jan 28, 2026", "note": "Asked for career advice" },
+      { "type": "Video", "date": "Jan 15, 2026", "note": "Project discussion" },
+      { "type": "Call", "date": "Jan 05, 2026", "note": "New year greetings" }
+    ]
   },
   {
     "id": 9,
@@ -114,7 +154,12 @@
     "bio": "Business partner from a previous startup project.",
     "goal": 15,
     "next_due_date": "2025-07-08",
-    "days": "62d ago"
+    "days": "62",
+    "recent_interactions": [
+       { "type": "Text", "date": "Jan 28, 2026", "note": "Asked for career advice" },
+      { "type": "Video", "date": "Jan 15, 2026", "note": "Project discussion" },
+      { "type": "Call", "date": "Jan 05, 2026", "note": "New year greetings" }
+    ]
   },
   {
     "id": 10,
@@ -127,7 +172,12 @@
     "bio": "Travel companion. Planning a trip to Cox’s Bazar soon.",
     "goal": 7,
     "next_due_date": "2025-07-21",
-    "days": "62d ago"
+    "days": "62",
+    "recent_interactions": [
+      { "type": "Text", "date": "Jan 28, 2026", "note": "Asked for career advice" },
+      { "type": "Video", "date": "Jan 15, 2026", "note": "Project discussion" },
+      { "type": "Call", "date": "Jan 05, 2026", "note": "New year greetings" }
+    ]
   },
   {
     "id": 11,
@@ -140,12 +190,17 @@
     "bio": "College friend. We used to study together before exams.",
     "goal": 10,
     "next_due_date": "2025-07-20",
-    "days": "62d ago"
+    "days": "62",
+    "recent_interactions": [
+       { "type": "Text", "date": "Jan 28, 2026", "note": "Asked for career advice" },
+      { "type": "Video", "date": "Jan 15, 2026", "note": "Project discussion" },
+      { "type": "Call", "date": "Jan 05, 2026", "note": "New year greetings" }
+    ]
   },
   {
     "id": 12,
     "name": "Shakil Ahmed",
-    "picture": "https://randomuser.me/api/portraits/men/22.jpg",
+    "picture": "https://randomuser.me/api/portraits/men/12.jpg",
     "email": "shakil.ahmed@gmail.com",
     "days_since_contact": 14,
     "status": "almost due",
@@ -153,6 +208,11 @@
     "bio": "Met in a coding bootcamp. Still share project ideas sometimes.",
     "goal": 12,
     "next_due_date": "2025-07-17",
-    "days": "62d ago"
+    "days": "62",
+    "recent_interactions": [
+      { "type": "Text", "date": "Jan 28, 2026", "note": "Asked for career advice" },
+      { "type": "Video", "date": "Jan 15, 2026", "note": "Project discussion" },
+      { "type": "Call", "date": "Jan 05, 2026", "note": "New year greetings" }
+    ]
   }
 ]

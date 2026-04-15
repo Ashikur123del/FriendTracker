@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const FriendCard = ({ friend }) => {
 
     
   return (
-    <div className="group border border-gray-100 p-6 rounded-2xl shadow-sm bg-white hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center">
+    <Link to={`/friendsdetails/${friend.id}`} className="group border border-gray-100 p-6 rounded-2xl shadow-sm bg-white hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col items-center text-center">
       
       <div className="relative mb-4">
         <div className="w-24 h-24 rounded-full p-1 border-2 border-[#244D3F] overflow-hidden">
@@ -20,7 +21,7 @@ const FriendCard = ({ friend }) => {
 
       <h3 className="font-bold text-xl text-[#244D3F] mb-1">{friend.name}</h3>
       <p className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-4">
-        {friend.days}
+        {friend.days}d ago
       </p>
 
       <div className="flex flex-wrap justify-center gap-2 mb-6">
@@ -42,7 +43,7 @@ const FriendCard = ({ friend }) => {
 >
   {friend.status}
 </button>
-    </div>
+    </Link>
   );
 };
 
