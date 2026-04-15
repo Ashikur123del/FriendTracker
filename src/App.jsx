@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home.jsx';
 import FriendsDetails from "./Pages/FriendsDetails/FriendsDetails.jsx";
 import TimeLine from "./Pages/TimeLine/TimeLine.jsx";
 import Recharts from "./Pages/RadialBarChartPage/Recharts.jsx";
+import Error from "./Pages/Error/Error.jsx";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +19,6 @@ export const router = createBrowserRouter([
       {path:'/timeline', Component: TimeLine},
       {path: '/stats', Component: Recharts}
     ],
-    
+     errorElement: <Error></Error>
   },
 ]);
