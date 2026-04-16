@@ -4,43 +4,43 @@ import { RadialBarChart, RadialBar, Legend, ResponsiveContainer, PolarAngleAxis 
 
 const FriendshipAnalytics = () => {
   const { callLogs, textLogs, videoLogs } = useFriends();
-  const totalCalls = callLogs.length;
-  const totalTexts = textLogs.length;
-  const totalVideos = videoLogs.length;
-
+  
+  const totalCalls = callLogs?.length || 0;
+  const totalTexts = textLogs?.length || 0;
+  const totalVideos = videoLogs?.length || 0;
+  const totalCombined = totalCalls + totalTexts + totalVideos;
 
   const chartData = [
     {
       name: 'Call',
-      count: totalCalls || 1, 
+      count: totalCalls, 
       fill: '#1E4631', 
-      background: { fill: '#F1F5F9' }, 
     },
     {
       name: 'Text',
-      count: totalTexts || 1,
+      count: totalTexts,
       fill: '#9333EA', 
-      background: { fill: '#F1F5F9' },
     },
     {
       name: 'Video',
-      count: totalVideos || 1,
+      count: totalVideos,
       fill: '#4ade80', 
-      background: { fill: '#F1F5F9' },
     },
   ];
-
 
   const renderCustomLegend = (props) => {
     const { payload } = props;
     return (
-      <div className="flex justify-center items-center gap-6 mt-6">
+      <div className="flex justify-center items-center gap-6 mt-8">
         {payload.map((entry, index) => (
           <div key={`item-${index}`} className="flex items-center gap-2">
-            <div className={`w-2.5 h-2.5 rounded-full`} style={{ backgroundColor: entry.color }} />
-            <span className="text-[10px] font-medium text-slate-400 tracking-wider">
-              {entry.value}
-            </span>
+            <div className="w-3 h-3 rounded-full" style={{ backgroundColor: entry.color }} />
+            <div className="flex flex-col">
+              <span className="text-[10px] font-black text-slate-400 uppercase tracking-tighter">
+                {entry.value}
+              </span>
+              <span className="text-sm font-bold text-slate-700">{entry.payload.count}</span>
+            </div>
           </div>
         ))}
       </div>
@@ -49,56 +49,55 @@ const FriendshipAnalytics = () => {
 
   return (
     <div className="bg-[#F8FAFC] min-h-screen py-12 px-6 font-sans">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-extrabold text-[#1E293B] mb-8 tracking-tighter">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-black text-[#1E293B] mb-8 tracking-tighter">
           Friendship Analytics
         </h1>
-        <div className="bg-white rounded-3xl p-10 shadow-sm border border-slate-100 flex flex-col animate-in fade-in slide-in-from-bottom-3">
-          
-          <h3 className="text-lg font-bold text-emerald-900/80 mb-2">
+
+        <div className="bg-white rounded-[2.5rem] p-10 shadow-sm border border-slate-100 animate-in fade-in slide-in-from-bottom-3">
+          <h3 className="text-sm font-black text-slate-400 uppercase tracking-[0.2em] mb-8">
             By Interaction Type
           </h3>
 
-          <div className="w-full h-[400px] flex justify-center items-center relative">
-        
-            {(totalCalls === 0 && totalTexts === 0 && totalVideos === 0) ? (
-              <div className="text-center text-slate-400 py-10 italic bg-slate-50 rounded-2xl w-full border border-dashed border-slate-100">
-                Sync data to see interaction breakdown
+          <div className="w-full h-[400px] flex justify-center items-center">
+            {totalCombined === 0 ? (
+              <div className="text-center">
+                <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-dashed border-slate-200">
+                   <div className="w-10 h-10 bg-slate-100 rounded-full animate-pulse" />
+                </div>
+                <p className="text-slate-400 font-bold italic">Sync data to see interaction breakdown</p>
               </div>
             ) : (
               <ResponsiveContainer width="100%" height="100%">
                 <RadialBarChart 
-                  cx="50%" 
-                  cy="50%" 
-                  innerRadius="40%" 
-                  outerRadius="80%" 
-                  barSize={10} 
+                  innerRadius="30%" 
+                  outerRadius="100%" 
+                  barSize={15} 
                   data={chartData}
                   startAngle={90} 
                   endAngle={450}
                 >
-                  <PolarAngleAxis type="number" domain={[0, totalCalls + totalTexts + totalVideos]} angleAxisId={0} tick={false} />
+                  <PolarAngleAxis 
+                    type="number" 
+                    domain={[0, Math.max(totalCalls, totalTexts, totalVideos) + 2]} 
+                    tick={false} 
+                  />
                   
-   
                   <RadialBar
-                    minAngle={15}
-                    label={false}
-                    background
+                    background={{ fill: '#F8FAFC' }}
                     clockWise
                     dataKey="count"
-                    cornerRadius={10} 
+                    cornerRadius={15}
                   />
                 
                   <Legend 
                     content={renderCustomLegend} 
-                    iconType="circle" 
                     verticalAlign="bottom" 
                   />
                 </RadialBarChart>
               </ResponsiveContainer>
             )}
           </div>
-          
         </div>
       </div>
     </div>

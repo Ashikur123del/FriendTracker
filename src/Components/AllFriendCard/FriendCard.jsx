@@ -9,7 +9,7 @@ const FriendCards = () => {
     const friends = use(friendPromise);
 
     return (
-        <div className='py-10'>
+        <div className='py-6 md:py-8 bg-[#f8fafc]'>
             <div className="max-w-7xl mx-auto px-4">
                 <h2 className="text-2xl font-bold mb-6">All Friends</h2>
 

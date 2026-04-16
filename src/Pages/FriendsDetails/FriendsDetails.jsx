@@ -1,22 +1,16 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
-import {
-  LuClock,
-  LuPhone,
-  LuMessageSquare,
-  LuVideo,
-  LuBadgeCheck,
-  LuHistory,
-  LuBellOff,
-  LuArchive,
-  LuTrash2,
+import { LuPhone, LuMessageSquare, LuVideo, LuHistory,LuBellOff,LuArchive, LuTrash2,
 } from "react-icons/lu";
 import { useFriends } from "../../Components/Context/FriendProvider/FriendProvider";
 import { toast } from "react-toastify";
 
 const FriendsDetails = () => {
+
   const { id } = useParams();
+
   const friends = useLoaderData();
+
   const { syncInteractions } = useFriends();
 
   const friend = friends.find((fnd) => fnd.id === parseInt(id));
@@ -31,8 +25,8 @@ const FriendsDetails = () => {
     bio,
     recent_interactions = [],
     days_since_contact = "0",
-    goal = "30",
-    next_due_date = "N/A",
+    goal,
+    next_due_date,
     tags = [],
     preferred = "Not set",
   } = friend;
