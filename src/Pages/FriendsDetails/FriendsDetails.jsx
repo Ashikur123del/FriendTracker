@@ -24,7 +24,7 @@ const FriendsDetails = () => {
     status,
     bio,
     recent_interactions = [],
-    days_since_contact = "0",
+    days_since_contact,
     goal,
     next_due_date,
     tags = [],

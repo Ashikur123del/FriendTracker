@@ -9,7 +9,9 @@ import {
 } from "react-icons/lu";
 
 const Timeline = () => {
+
   const { callLogs, textLogs, videoLogs } = useFriends();
+  
   const [activeFilter, setActiveFilter] = useState("All");
 
   const allLogs = [
